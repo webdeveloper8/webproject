@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ألواح الطاقة الشمسية</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/logo.png">
+</head>
+<body>
+    <!-- القائمة المنسدلة -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <nav class="menu" id="menu">
+        <a href="#home">الرئيسية</a>
+        <a href="#about">من نحن</a>
+        <a href="#services">خدماتنا</a>
+        <a href="#products">بضاعتنا</a>
+        <a href="#payment">الدفع الإلكتروني</a>
+        <a href="#contact">تواصل معنا</a>
+    </nav>
+
+    <!-- الأقسام -->
+    <section id="home" class="active">
+        <h1>أعمالنا</h1>
+        <div class="gallery">
+            <img src="images/work1.jpg" alt="عمل 1">
+            <img src="images/work2.jpg" alt="عمل 2">
+            <!-- أضف باقي الصور هنا -->
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>من نحن</h2>
+        <p>نحن متخصصون في تركيب ألواح الطاقة الشمسية...</p>
+    </section>
+
+    <section id="services">
+        <h2>خدماتنا</h2>
+        <p>تفاصيل الخدمات المقدمة...</p>
+    </section>
+
+    <section id="products">
+        <h2>بضاعتنا</h2>
+        <p>المنتجات المتاحة...</p>
+    </section>
+
+    <section id="payment">
+        <h2>الدفع الإلكتروني</h2>
+        <button class="payment-btn" onclick="window.location.href='https://paypal.com/your-link'">
+            ادفع الآن
+        </button>
+    </section>
+
+    <section id="contact">
+        <h2>تواصل معنا</h2>
+        <p>الهاتف: 0555555555</p>
+        <p>البريد: email@example.com</p>
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
