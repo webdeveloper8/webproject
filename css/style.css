@@ -3,14 +3,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
-    font-family: 'Tahoma', Arial, sans-serif;
+    font-family: 'Tahoma', 'Arial', sans-serif;
     line-height: 1.8;
     background: #f8f9fa;
     color: #2c3e50;
+    min-height: 100vh;
+    scroll-behavior: smooth;
 }
 
 /* شريط اللغات */
@@ -20,32 +22,37 @@ body {
     left: 50%;
     transform: translateX(-50%);
     z-index: 1001;
-}
-
-.lang-switcher select {
-    padding: 10px 20px;
-    border: 2px solid #2c5f2d;
-    border-radius: 25px;
-    background: #ffffff;
-    color: #2c5f2d;
-    font-weight: bold;
-    cursor: pointer;
+    background: rgba(255,255,255,0.9);
+    padding: 10px;
+    border-radius: 30px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-/* القائمة */
+.lang-switcher select {
+    padding: 8px 20px;
+    border: 2px solid #2c5f2d;
+    border-radius: 25px;
+    background: transparent;
+    color: #2c5f2d;
+    font-weight: 600;
+    cursor: pointer;
+    appearance: none;
+}
+
+/* القائمة الرئيسية */
 .menu-icon {
     position: fixed;
     top: 20px;
     right: 20px;
     background: #2c5f2d;
     color: white;
-    padding: 15px;
+    padding: 15px 18px;
     border: none;
     border-radius: 50%;
     cursor: pointer;
     z-index: 1000;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    font-size: 1.5rem;
 }
 
 .menu {
@@ -55,11 +62,13 @@ body {
     background: rgba(255,255,255,0.98);
     border-radius: 15px;
     padding: 20px;
-    width: 250px;
+    width: 280px;
     opacity: 0;
     transform: translateY(-20px);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    z-index: 999;
 }
 
 .menu.active {
@@ -69,11 +78,12 @@ body {
 
 .menu a {
     display: block;
-    padding: 15px;
-    margin: 10px 0;
+    padding: 15px 20px;
+    margin: 8px 0;
     color: #2c5f2d;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 10px;
+    transition: all 0.3s;
 }
 
 .menu a:hover {
@@ -86,11 +96,12 @@ section {
     padding: 100px 8%;
     min-height: 100vh;
     display: none;
+    scroll-margin-top: 80px;
 }
 
 section.active {
     display: block;
-    animation: fadeIn 0.6s ease;
+    animation: fadeIn 0.6s ease forwards;
 }
 
 @keyframes fadeIn {
@@ -98,41 +109,84 @@ section.active {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* التنسيقات الخاصة */
-.hero-content {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.stats {
-    display: flex;
-    justify-content: center;
+/* تصميم الدفع */
+.payment-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 40px;
-    margin-top: 50px;
+    max-width: 1200px;
+    margin: 2rem auto;
 }
 
-.service-card {
-    background: white;
-    padding: 30px;
+.bank-details {
+    background: #ffffff;
+    padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
+.payment-btn {
+    background: linear-gradient(45deg, #2c5f2d, #4CAF50);
+    color: white;
+    padding: 15px 45px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: inline-block;
 }
 
+.payment-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(44,95,45,0.3);
+}
+
+/* تصميم الواتساب */
+.whatsapp-link {
+    display: inline-block;
+    background: #25D366;
+    color: white !important;
+    padding: 10px 25px;
+    border-radius: 25px;
+    margin-top: 15px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.whatsapp-link:hover {
+    background: #128C7E;
+}
+
+/* التجاوب مع الشاشات الصغيرة */
 @media (max-width: 768px) {
     .menu {
         width: 90%;
         right: 5%;
     }
-    
-    .stats {
-        flex-direction: column;
+
+    .payment-content {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 80px 5%;
+    }
+
+    .menu-icon {
+        padding: 12px 15px;
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .lang-switcher {
+        top: 15px;
+        padding: 8px;
+    }
+
+    .lang-switcher select {
+        padding: 6px 15px;
     }
 }
