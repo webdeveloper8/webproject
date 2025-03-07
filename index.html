@@ -1,62 +1,103 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ألواح الطاقة الشمسية</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="images/logo.png">
+    <title>شركة أبو معاذ مطر للطاقة الشمسية</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- القائمة المنسدلة -->
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
-    <nav class="menu" id="menu">
-        <a href="#home">الرئيسية</a>
-        <a href="#about">من نحن</a>
-        <a href="#services">خدماتنا</a>
-        <a href="#products">بضاعتنا</a>
-        <a href="#payment">الدفع الإلكتروني</a>
-        <a href="#contact">تواصل معنا</a>
+    <!-- شريط اللغة واللوجو -->
+    <header class="main-header">
+        <div class="lang-switcher">
+            <select id="langSelect" onchange="changeLanguage(this.value)">
+                <option value="ar">العربية</option>
+                <option value="en">English</option>
+                <option value="tr">Türkçe</option>
+            </select>
+        </div>
+        
+        <div class="branding">
+            <h1 data-lang-key="company_name">شركة أبو معاذ مطر</h1>
+            <p data-lang-key="ceo">الرئيس التنفيذي: براء مطر</p>
+        </div>
+    </header>
+
+    <!-- القائمة الرئيسية -->
+    <nav class="main-nav">
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <ul class="nav-list" id="navMenu">
+            <li><a href="#home" data-lang-key="home">الرئيسية</a></li>
+            <li><a href="#about" data-lang-key="about">عن الشركة</a></li>
+            <li><a href="#products" data-lang-key="products">المنتجات</a></li>
+            <li><a href="#contact" data-lang-key="contact">التواصل</a></li>
+        </ul>
     </nav>
 
-    <!-- الأقسام -->
-    <section id="home" class="active">
-        <h1>أعمالنا</h1>
-        <div class="gallery">
-            <img src="images/work1.jpg" alt="عمل 1">
-            <img src="images/work2.jpg" alt="عمل 2">
-            <!-- أضف باقي الصور هنا -->
-        </div>
-    </section>
+    <!-- الأقسام الرئيسية -->
+    <main class="main-content">
+        <section id="home" class="active">
+            <div class="hero-section">
+                <div class="upload-container" data-type="main">
+                    <input type="file" accept="image/*" hidden>
+                    <label class="upload-label" data-lang-key="upload_main">رفع شعار الشركة</label>
+                    <img class="upload-preview">
+                </div>
+            </div>
+        </section>
 
-    <section id="about">
-        <h2>من نحن</h2>
-        <p>نحن شركة رائدة متخصصون في صناعة و  تركيب ألواح الطاقة الشمسية...</p>
-    </section>
+        <section id="about">
+            <div class="about-grid">
+                <div class="upload-container" data-type="about">
+                    <input type="file" accept="image/*" hidden>
+                    <label class="upload-label" data-lang-key="upload_about">رفع صورة عن الشركة</label>
+                    <img class="upload-preview">
+                </div>
+                <div class="about-text" data-lang-key="about_text">
+                    <h2>خبرة عقد من التميز</h2>
+                    <p>شركة رائدة في حلول الطاقة الشمسية منذ 2013...</p>
+                </div>
+            </div>
+        </section>
 
-    <section id="services">
-        <h2>خدماتنا</h2>
-        <p>تفاصيل الخدمات المقدمة...</p>
-    </section>
+        <section id="products">
+            <div class="products-grid">
+                <div class="product-card" data-product="1">
+                    <div class="upload-container" data-type="product">
+                        <input type="file" accept="image/*" hidden>
+                        <label class="upload-label" data-lang-key="upload_product">رفع صورة المنتج</label>
+                        <img class="upload-preview">
+                    </div>
+                    <div class="product-info">
+                        <h3 data-lang-key="product1_title">النظام الشمسي المتكامل</h3>
+                        <p data-lang-key="product1_desc">كفاءة 22% مع ضمان 25 سنة...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="products">
-        <h2>بضاعتنا</h2>
-        <p>المنتجات المتاحة...</p>
-    </section>
+        <section id="contact">
+            <div class="contact-wrapper">
+                <div class="contact-box">
+                    <h3 data-lang-key="contact">معلومات التواصل</h3>
+                    <div class="contact-info">
+                        <p>+963 958 944 604</p>
+                        <a href="https://wa.me/963958944604" class="whatsapp-btn">واتساب</a>
+                        <a href="mailto:baraamatar11@gmail.com" class="email-btn">بريد إلكتروني</a>
+                    </div>
+                </div>
+                
+                <div class="payment-box">
+                    <h3 data-lang-key="payment">الدفع الإلكتروني</h3>
+                    <div class="payment-details">
+                        <p>VISA: 4111 1111 1111 1111</p>
+                        <p>Exp: 12/28 | CVV: 123</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <section id="payment">
-        <h2>الدفع الإلكتروني</h2>
-        <button class="payment-btn" onclick="window.location.href='https://paypal.com/your-link'">
-            ادفع الآن
-        </button>
-    </section>
-
-    <section id="contact">
-        <h2>تواصل معنا</h2>
-        <p>الهاتف:0958944604</p>
-        <p>البريد: baraamatar11@gmail.com</p>
-    </section>
-
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
