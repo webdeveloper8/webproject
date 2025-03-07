@@ -3,52 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="شركة متخصصة في أنظمة الطاقة الشمسية">
-    <title>ألواح الطاقة الشمسية | شركة النور</title>
+    <title>شركة مطر للطاقة الشمسية - ريف دمشق</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="icon" href="images/logo.png">
 </head>
 <body>
-    <!-- زر القائمة المحسّن -->
-    <button class="menu-icon" id="menuBtn" aria-label="فتح القائمة" aria-expanded="false" aria-controls="menu">
-        <span class="hamburger" aria-hidden="true">☰</span>
-    </button>
+    <!-- شريط اللغات -->
+    <div class="lang-switcher">
+        <select id="language">
+            <option value="ar">العربية</option>
+            <option value="en">English</option>
+            <option value="tr">Türkçe</option>
+        </select>
+    </div>
 
-    <!-- القائمة المنسدلة المحسنة -->
-    <nav class="menu" id="menu" aria-label="القائمة الرئيسية">
-        <ul role="menubar">
-            <li role="none"><a href="#home" class="nav-link" role="menuitem">الرئيسية</a></li>
-            <li role="none"><a href="#about" class="nav-link" role="menuitem">من نحن</a></li>
-            <li role="none"><a href="#services" class="nav-link" role="menuitem">خدماتنا</a></li>
-            <li role="none"><a href="#products" class="nav-link" role="menuitem">بضاعتنا</a></li>
-            <li role="none"><a href="#payment" class="nav-link" role="menuitem">الدفع الإلكتروني</a></li>
-            <li role="none"><a href="#contact" class="nav-link" role="menuitem">تواصل معنا</a></li>
-        </ul>
+    <!-- القائمة الرئيسية -->
+    <button class="menu-icon" aria-label="القائمة" onclick="toggleMenu()">☰</button>
+    <nav class="menu" id="menu">
+        <a href="#home" data-translate="home">الرئيسية</a>
+        <a href="#about" data-translate="about">من نحن</a>
+        <a href="#services" data-translate="services">خدماتنا</a>
+        <a href="#projects" data-translate="projects">مشاريعنا</a>
+        <a href="#testimonials" data-translate="testimonials">اراء العملاء</a>
+        <a href="#contact" data-translate="contact">اتصل بنا</a>
     </nav>
 
-    <!-- المحتوى الرئيسي -->
-    <main>
-        <!-- قسم الرئيسية المحسّن -->
-        <section id="home" class="active" aria-labelledby="homeHeading">
-            <h1 id="homeHeading" class="sr-only">أعمالنا</h1>
-            <div class="gallery" role="group" aria-label="معرض الأعمال">
-                <figure>
-                    <img src="images/work1.jpg" alt="تركيب الألواح على سطح تجاري" loading="lazy">
-                    <figcaption>تركيب نظام 50 كيلو واط</figcaption>
-                </figure>
-                <!-- ... باقي الصور ... -->
+    <!-- الأقسام -->
+    <section id="home" class="active">
+        <div class="hero-content">
+            <h1 data-translate="hero_title">شركة مطر للطاقة المتجددة</h1>
+            <p data-translate="hero_sub">خبرة 10 سنوات في حلول الطاقة الذكية</p>
+            <div class="stats">
+                <div class="stat-box">
+                    <h3 data-translate="stat1">+1500</h3>
+                    <p data-translate="stat1_text">مشروع منفذ</p>
+                </div>
+                <div class="stat-box">
+                    <h3>85%</h3>
+                    <p data-translate="stat2_text">توفير في الطاقة</p>
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- باقي الأقسام مع تحسينات إمكانية الوصول -->
-        <section id="about" aria-labelledby="aboutHeading">
-            <h2 id="aboutHeading">من نحن</h2>
-            <p>نحن شركة رائدة متخصصون في صناعة وتركيب ألواح الطاقة الشمسية...</p>
-        </section>
+    <section id="about">
+        <h2 data-translate="about_title">تاريخنا العريق</h2>
+        <div class="history-content">
+            <div class="history-item">
+                <h3>2013</h3>
+                <p data-translate="about_2013">تأسيس الشركة في قرية حران العواميد بريف دمشق بمشروعين تجريبيين</p>
+            </div>
+            <div class="history-item">
+                <h3>2017</h3>
+                <p data-translate="about_2017">تركيب أول نظام طاقة شمسي متكامل للمنازل بسعة 5 كيلو واط</p>
+            </div>
+            <div class="history-item">
+                <h3>2023</h3>
+                <p data-translate="about_2023">توسعة المصنع ليشمل إنتاج الألواح الشمسية محلياً</p>
+            </div>
+        </div>
+        <div class="certificates">
+            <h3 data-translate="certificates">شهاداتنا المعتمدة:</h3>
+            <ul>
+                <li data-translate="cert1">شهادة ISO 9001:2015</li>
+                <li data-translate="cert2">اعتماد وزارة الكهرباء السورية</li>
+                <li data-translate="cert3">شهادة CE الأوروبية</li>
+            </ul>
+        </div>
+    </section>
 
-        <!-- ... باقي الأقسام ... -->
-    </main>
+    <section id="services">
+        <h2 data-translate="services_title">حلولنا المتكاملة</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3 data-translate="service1">الأنظمة المنزلية</h3>
+                <p data-translate="service1_desc">تصميم وتركيب أنظمة 3-10 كيلو واط مع ضمان 10 سنوات</p>
+            </div>
+            <div class="service-card">
+                <h3 data-translate="service2">المشاريع الزراعية</h3>
+                <p data-translate="service2_desc">حلول مضخات المياه بالطاقة الشمسية</p>
+            </div>
+        </div>
+    </section>
 
-    <script src="js/script.js" defer></script>
+    <section id="projects">
+        <h2 data-translate="projects_title">أبرز المشاريع</h2>
+        <div class="gallery">
+            <div class="project-item">
+                <img src="images/project1.jpg" alt="مشروع زراعي" loading="lazy">
+                <h3 data-translate="project1">مشروع دير العصافير الزراعي</h3>
+                <p data-translate="project1_desc">تركيب نظام 50 كيلو واط لتشغيل مضخات الري</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 data-translate="contact_title">تواصل معنا</h2>
+        <div class="contact-info">
+            <p data-translate="address">المقر الرئيسي: ريف دمشق - حران العواميد</p>
+            <p data-translate="phone">الهاتف: 0958944604</p>
+            <p data-translate="email">البريد: info@mattar-solar.com</p>
+        </div>
+    </section>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
