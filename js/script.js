@@ -1,110 +1,92 @@
-// عناصر DOM الأساسية
-const menu = document.getElementById('menu');
-const menuIcon = document.querySelector('.menu-icon');
-const navLinks = document.querySelectorAll('.nav-link');
-const sections = document.querySelectorAll('section');
-
-// تهيئة الصفحة
-document.addEventListener('DOMContentLoaded', () => {
-    // إضافة المحتوى الديناميكي
-    populateHomeSection();
-    populateAboutSection();
-    
-    // تفعيل القسم الأول
-    document.getElementById('home').classList.add('active');
-});
-
-// وظائف القائمة
-function toggleMenu() {
-    menu.classList.toggle('active');
-    menuIcon.classList.toggle('active');
-}
-
-// إغلاق القائمة عند النقر خارجها
-document.addEventListener('click', (e) => {
-    if (!menu.contains(e.target) && !menuIcon.contains(e.target)) {
-        menu.classList.remove('active');
-        menuIcon.classList.remove('active');
+class SolarCompany {
+    constructor() {
+        this.uploadContainers = document.querySelectorAll('.upload-container');
+        this.translations = {
+            ar: {
+                home: 'الرئيسية',
+                about: 'عن الشركة',
+                // ... جميع الترجمات العربية
+            },
+            en: {
+                home: 'Home',
+                about: 'About',
+                // ... جميع الترجمات الإنجليزية
+            },
+            tr: {
+                home: 'Ana Sayfa',
+                about: 'Hakkımızda',
+                // ... جميع الترجمات التركية
+            }
+        };
+        this.init();
     }
-});
 
-// إغلاق القائمة عند التمرير
-window.addEventListener('scroll', () => {
-    if (menu.classList.contains('active')) {
-        menu.classList.remove('active');
-        menuIcon.classList.remove('active');
+    init() {
+        this.setupUploadSystem();
+        this.setupEventListeners();
+        this.setLanguage('ar');
     }
-});
 
-// التنقل بين الأقسام
-navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetSection = document.querySelector(link.getAttribute('href'));
-        
-        sections.forEach(section => section.classList.remove('active'));
-        targetSection.classList.add('active');
-        
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+    setupUploadSystem() {
+        this.uploadContainers.forEach(container => {
+            const input = container.querySelector('input');
+            const label = container.querySelector('.upload-label');
+            const preview = container.querySelector('.upload-preview');
+
+            label.addEventListener('click', () => {
+                if(preview.style.display === 'block' && !this.verifyPassword()) return;
+                input.click();
+            });
+
+            input.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if(file) this.handleImageUpload(file, preview, label);
+            });
         });
-        
-        menu.classList.remove('active');
-        menuIcon.classList.remove('active');
-    });
-});
-
-// إغلاق القائمة بمفتاح Escape
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && menu.classList.contains('active')) {
-        menu.classList.remove('active');
-        menuIcon.classList.remove('active');
     }
-});
 
-// المحتوى الديناميكي
-function populateHomeSection() {
-    const homeContent = `
-        <div class="company-profile">
-            <h2>الطاقة النظيفة لمستقبل أفضل</h2>
-            <p>
-                شركة رائدة في مجال حلول الطاقة المتجددة منذ 2010، نقدم أنظمة شمسية 
-                بمعايير عالمية مع ضمان يصل إلى 25 سنة. أكثر من 500 مشروع ناجح 
-                في جميع أنحاء المملكة.
-            </p>
-            <div class="stats">
-                <div class="stat-item">
-                    <h3>14+</h3>
-                    <p>سنوات الخبرة</p>
-                </div>
-                <div class="stat-item">
-                    <h3>85%</h3>
-                    <p>توفير في الاستهلاك</p>
-                </div>
-            </div>
-        </div>
-    `;
-    document.getElementById('home').insertAdjacentHTML('afterbegin', homeContent);
+    handleImageUpload(file, preview, label) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+            label.style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+    }
+
+    verifyPassword() {
+        const pass = prompt('كلمة المرور المطلوبة للتعديل:');
+        return pass === 'baraa';
+    }
+
+    setLanguage(lang) {
+        document.documentElement.setAttribute('data-lang', lang);
+        document.querySelectorAll('[data-lang-key]').forEach(el => {
+            const key = el.dataset.langKey;
+            el.textContent = this.translations[lang][key] || el.textContent;
+        });
+    }
+
+    setupEventListeners() {
+        // إدارة القائمة المنسدلة
+        document.querySelector('.menu-icon').addEventListener('click', this.toggleMenu);
+        
+        // إغلاق القائمة عند التمرير
+        window.addEventListener('scroll', () => {
+            if(document.querySelector('.nav-list.active')) this.toggleMenu();
+        });
+    }
+
+    toggleMenu() {
+        document.querySelector('.nav-list').classList.toggle('active');
+        document.querySelector('.menu-icon').classList.toggle('active');
+    }
+
+    changeLanguage(lang) {
+        this.setLanguage(lang);
+    }
 }
 
-function populateAboutSection() {
-    const aboutContent = `
-        <h2>خبرة تمتد عبر الزمن</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <h3>2010</h3>
-                <p>تأسيس الشركة بأول مشروع تجاري</p>
-            </div>
-            <div class="timeline-item">
-                <h3>2018</h3>
-                <p>الحصول على شهادة الجودة العالمية</p>
-            </div>
-            <div class="timeline-item">
-                <h3>2024</h3>
-                <p>وصول عدد العملاء إلى 5000+ عميل</p>
-            </div>
-        </div>
-    `;
-    document.querySelector('#about .about-container').innerHTML = aboutContent;
-}
+// بدء التشغيل عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', () => new SolarCompany());
