@@ -3,74 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شركة مطر للطاقة الشمسية</title>
+    <title>ألواح الطاقة الشمسية</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/logo.png">
 </head>
 <body>
     <!-- القائمة المنسدلة -->
     <div class="menu-icon" onclick="toggleMenu()">☰</div>
     <nav class="menu" id="menu">
         <a href="#home">الرئيسية</a>
-        <a href="#about">عن الشركة</a>
-        <a href="#products">المنتجات</a>
-        <a href="#contact">التواصل</a>
+        <a href="#about">من نحن</a>
+        <a href="#services">خدماتنا</a>
+        <a href="#products">بضاعتنا</a>
+        <a href="#payment">الدفع الإلكتروني</a>
+        <a href="#contact">تواصل معنا</a>
     </nav>
 
     <!-- الأقسام -->
     <section id="home" class="active">
-        <div class="header-content">
-            <h1>شركة مطر للطاقة المتجددة</h1>
-            <div class="image-upload">
-                <input type="file" id="headerUpload" accept="image/*" hidden>
-                <label for="headerUpload" class="upload-btn">⬆️ رفع شعار الشركة</label>
-                <img id="headerPreview" class="uploaded-image">
-            </div>
-        </div>
-        
-        <div class="content-box">
-            <h2>الطاقة الشمسية: مستقبل مستدام</h2>
-            <p>نقدم حلولاً مبتكرة منذ 2013...</p>
+        <h1>أعمالنا</h1>
+        <div class="gallery">
+            <img src="images/work1.jpg" alt="عمل 1">
+            <img src="images/work2.jpg" alt="عمل 2">
+            <!-- أضف باقي الصور هنا -->
         </div>
     </section>
 
     <section id="about">
-        <div class="content-box">
-            <h2>عن الشركة</h2>
-            <div class="image-upload">
-                <input type="file" id="aboutUpload" accept="image/*" hidden>
-                <label for="aboutUpload" class="upload-btn">⬆️ رفع صورة الشركة</label>
-                <img id="aboutPreview" class="uploaded-image">
-            </div>
-            <p>خبرة 10 سنوات في مجال الطاقة النظيفة...</p>
-        </div>
+        <h2>من نحن</h2>
+        <p>نحن شركة رائدة متخصصون في صناعة و  تركيب ألواح الطاقة الشمسية...</p>
+    </section>
+
+    <section id="services">
+        <h2>خدماتنا</h2>
+        <p>تفاصيل الخدمات المقدمة...</p>
     </section>
 
     <section id="products">
-        <div class="content-box">
-            <h2>منتجاتنا</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="image-upload">
-                        <input type="file" id="product1Upload" accept="image/*" hidden>
-                        <label for="product1Upload" class="upload-btn">⬆️ رفع صورة المنتج</label>
-                        <img id="product1Preview" class="uploaded-image">
-                    </div>
-                    <h3>النظام الشمسي الذكي</h3>
-                    <p>كفاءة 22% مع ضمان 25 سنة</p>
-                </div>
-            </div>
-        </div>
+        <h2>بضاعتنا</h2>
+        <p>المنتجات المتاحة...</p>
+    </section>
+
+    <section id="payment">
+        <h2>الدفع الإلكتروني</h2>
+        <button class="payment-btn" onclick="window.location.href='https://paypal.com/your-link'">
+            ادفع الآن
+        </button>
     </section>
 
     <section id="contact">
-        <div class="content-box">
-            <h2>تواصل معنا</h2>
-            <div class="contact-info">
-                <p>الهاتف: +963958944604</p>
-                <a href="https://wa.me/963958944604" class="whatsapp-btn">واتساب</a>
-                <a href="mailto:baraamatar11@gmail.com" class="email-btn">البريد الإلكتروني</a>
-            </div>
-        </div>
+        <h2>تواصل معنا</h2>
+        <p>الهاتف:0958944604</p>
+        <p>البريد: baraamatar11@gmail.com</p>
     </section>
 
     <script src="js/script.js"></script>
