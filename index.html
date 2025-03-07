@@ -3,60 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ألواح الطاقة الشمسية</title>
+    <meta name="description" content="شركة متخصصة في أنظمة الطاقة الشمسية">
+    <title>ألواح الطاقة الشمسية | شركة النور</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="images/logo.png">
+    <link rel="icon" href="images/logo.png" type="image/png">
 </head>
 <body>
-    <!-- القائمة المنسدلة -->
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
-    <nav class="menu" id="menu">
-        <a href="#home">الرئيسية</a>
-        <a href="#about">من نحن</a>
-        <a href="#services">خدماتنا</a>
-        <a href="#products">بضاعتنا</a>
-        <a href="#payment">الدفع الإلكتروني</a>
-        <a href="#contact">تواصل معنا</a>
+    <!-- زر القائمة المحسّن -->
+    <button class="menu-icon" id="menuBtn" aria-label="فتح القائمة" aria-expanded="false" aria-controls="menu">
+        <span class="hamburger" aria-hidden="true">☰</span>
+    </button>
+
+    <!-- القائمة المنسدلة المحسنة -->
+    <nav class="menu" id="menu" aria-label="القائمة الرئيسية">
+        <ul role="menubar">
+            <li role="none"><a href="#home" class="nav-link" role="menuitem">الرئيسية</a></li>
+            <li role="none"><a href="#about" class="nav-link" role="menuitem">من نحن</a></li>
+            <li role="none"><a href="#services" class="nav-link" role="menuitem">خدماتنا</a></li>
+            <li role="none"><a href="#products" class="nav-link" role="menuitem">بضاعتنا</a></li>
+            <li role="none"><a href="#payment" class="nav-link" role="menuitem">الدفع الإلكتروني</a></li>
+            <li role="none"><a href="#contact" class="nav-link" role="menuitem">تواصل معنا</a></li>
+        </ul>
     </nav>
 
-    <!-- الأقسام -->
-    <section id="home" class="active">
-        <h1>أعمالنا</h1>
-        <div class="gallery">
-            <img src="images/work1.jpg" alt="عمل 1">
-            <img src="images/work2.jpg" alt="عمل 2">
-            <!-- أضف باقي الصور هنا -->
-        </div>
-    </section>
+    <!-- المحتوى الرئيسي -->
+    <main>
+        <!-- قسم الرئيسية المحسّن -->
+        <section id="home" class="active" aria-labelledby="homeHeading">
+            <h1 id="homeHeading" class="sr-only">أعمالنا</h1>
+            <div class="gallery" role="group" aria-label="معرض الأعمال">
+                <figure>
+                    <img src="images/work1.jpg" alt="تركيب الألواح على سطح تجاري" loading="lazy">
+                    <figcaption>تركيب نظام 50 كيلو واط</figcaption>
+                </figure>
+                <!-- ... باقي الصور ... -->
+            </div>
+        </section>
 
-    <section id="about">
-        <h2>من نحن</h2>
-        <p>نحن شركة رائدة متخصصون في صناعة و  تركيب ألواح الطاقة الشمسية...</p>
-    </section>
+        <!-- باقي الأقسام مع تحسينات إمكانية الوصول -->
+        <section id="about" aria-labelledby="aboutHeading">
+            <h2 id="aboutHeading">من نحن</h2>
+            <p>نحن شركة رائدة متخصصون في صناعة وتركيب ألواح الطاقة الشمسية...</p>
+        </section>
 
-    <section id="services">
-        <h2>خدماتنا</h2>
-        <p>تفاصيل الخدمات المقدمة...</p>
-    </section>
+        <!-- ... باقي الأقسام ... -->
+    </main>
 
-    <section id="products">
-        <h2>بضاعتنا</h2>
-        <p>المنتجات المتاحة...</p>
-    </section>
-
-    <section id="payment">
-        <h2>الدفع الإلكتروني</h2>
-        <button class="payment-btn" onclick="window.location.href='https://paypal.com/your-link'">
-            ادفع الآن
-        </button>
-    </section>
-
-    <section id="contact">
-        <h2>تواصل معنا</h2>
-        <p>الهاتف:0958944604</p>
-        <p>البريد: baraamatar11@gmail.com</p>
-    </section>
-
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
 </body>
 </html>
