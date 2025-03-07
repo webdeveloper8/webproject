@@ -1,66 +1,82 @@
-// نظام الترجمة
+// نظام الترجمة المتكامل
 const translations = {
     ar: {
         home: "الرئيسية",
         about: "من نحن",
         services: "خدماتنا",
-        projects: "مشاريعنا",
+        payment: "الدفع الإلكتروني",
         contact: "اتصل بنا",
-        hero_title: "شركة مطر للطاقة المتجددة",
-        hero_sub: "خبرة 10 سنوات في حلول الطاقة الذكية",
-        // جميع الترجمات العربية
+        payment_title: "الدفع الآمن",
+        payment_btn: "ادفع الآن عبر البطاقة",
+        whatsapp: "محادثة واتساب"
     },
     en: {
         home: "Home",
-        about: "About Us",
+        about: "About",
         services: "Services",
-        projects: "Projects",
+        payment: "Payment",
         contact: "Contact",
-        hero_title: "Mattar Renewable Energy",
-        hero_sub: "10 Years Experience in Smart Energy",
-        // جميع الترجمات الإنجليزية
+        payment_title: "Secure Payment",
+        payment_btn: "Pay with Card",
+        whatsapp: "WhatsApp Chat"
     },
     tr: {
         home: "Ana Sayfa",
         about: "Hakkımızda",
         services: "Hizmetler",
-        projects: "Projeler",
+        payment: "Ödeme",
         contact: "İletişim",
-        hero_title: "Mattar Yenilenebilir Enerji",
-        hero_sub: "Akıllı Enerjide 10 Yıllık Deneyim",
-        // جميع الترجمات التركية
+        payment_title: "Güvenli Ödeme",
+        payment_btn: "Kartla Öde",
+        whatsapp: "WhatsApp Sohbet"
     }
 };
 
-// تغيير اللغة
-document.getElementById('language').addEventListener('change', function(e) {
-    const lang = e.target.value;
+// تهيئة اللغة
+function initLanguage() {
+    const lang = localStorage.getItem('lang') || 'ar';
+    document.getElementById('language').value = lang;
+    applyLanguage(lang);
+}
+
+// تطبيق اللغة
+function applyLanguage(lang) {
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     
-    document.querySelectorAll('[data-translate]').forEach(element => {
-        const key = element.getAttribute('data-translate');
-        element.textContent = translations[lang][key];
+    document.querySelectorAll('[data-translate]').forEach(el => {
+        const key = el.dataset.translate;
+        el.textContent = translations[lang][key] || translations['ar'][key];
     });
+    
+    // تحديث زر الواتساب
+    const whatsappBtn = document.querySelector('.whatsapp-link');
+    if(whatsappBtn) {
+        whatsappBtn.textContent = translations[lang].whatsapp;
+    }
+}
+
+// تغيير اللغة
+document.getElementById('language').addEventListener('change', (e) => {
+    const lang = e.target.value;
+    localStorage.setItem('lang', lang);
+    applyLanguage(lang);
 });
 
 // إدارة القائمة
 const menu = document.getElementById('menu');
-let menuTimeout;
+let menuTimer;
 
 function toggleMenu() {
-    clearTimeout(menuTimeout);
     menu.classList.toggle('active');
-    
+    clearTimeout(menuTimer);
     if(menu.classList.contains('active')) {
-        menuTimeout = setTimeout(() => {
-            menu.classList.remove('active');
-        }, 5000);
+        menuTimer = setTimeout(() => menu.classList.remove('active'), 5000);
     }
 }
 
 // إغلاق القائمة
-document.addEventListener('click', function(e) {
+document.addEventListener('click', (e) => {
     if (!menu.contains(e.target) && !e.target.classList.contains('menu-icon')) {
         menu.classList.remove('active');
     }
@@ -68,29 +84,49 @@ document.addEventListener('click', function(e) {
 
 // تبديل الأقسام
 document.querySelectorAll('.menu a').forEach(link => {
-    link.addEventListener('click', function(e) {
+    link.addEventListener('click', (e) => {
         e.preventDefault();
-        const targetId = this.getAttribute('href');
+        const targetId = link.getAttribute('href');
         
-        // إخفاء جميع الأقسام
         document.querySelectorAll('section').forEach(section => {
             section.classList.remove('active');
             section.style.display = 'none';
         });
         
-        // إظهار القسم المطلوب
         const targetSection = document.querySelector(targetId);
         targetSection.style.display = 'block';
-        setTimeout(() => {
-            targetSection.classList.add('active');
-        }, 50);
+        setTimeout(() => targetSection.classList.add('active'), 50);
         
-        // إغلاق القائمة
         menu.classList.remove('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 });
 
-// تهيئة أولية
+// تهيئة الصفحة
 document.addEventListener('DOMContentLoaded', () => {
+    initLanguage();
     document.getElementById('home').style.display = 'block';
+    
+    // إضافة رابط الواتساب ديناميكيًا
+    const phoneElement = document.querySelector('#contact p:nth-child(1)');
+    if(phoneElement) {
+        phoneElement.innerHTML = `
+            ${translations[document.documentElement.lang].phone}:
+            <a class="whatsapp-link" 
+               href="https://wa.me/963958944604" 
+               target="_blank" 
+               rel="noopener noreferrer">
+                ${translations[document.documentElement.lang].whatsapp}
+            </a>
+        `;
+    }
+});
+
+// إدارة الدفع
+document.querySelector('.payment-btn').addEventListener('click', () => {
+    window.open(
+        'https://securepaymentgateway.com/pay?iban=SY023232323232323',
+        '_blank',
+        'noopener,noreferrer'
+    );
 });
