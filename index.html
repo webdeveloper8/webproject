@@ -1,76 +1,76 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" data-lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>شركة أبو معاذ مطر للطاقة الشمسية</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/logo.png">
 </head>
 <body>
-    <!-- شريط اللغة واللوجو -->
-    <header class="main-header">
-        <div class="lang-switcher">
-            <select id="langSelect" onchange="changeLanguage(this.value)">
-                <option value="ar">العربية</option>
-                <option value="en">English</option>
-                <option value="tr">Türkçe</option>
-            </select>
+    <!-- شريط التنقل -->
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <h1>شركة مطر</h1>
         </div>
         
-        <div class="branding">
-            <h1 data-lang-key="company_name">شركة أبو معاذ مطر</h1>
-            <p data-lang-key="ceo">الرئيس التنفيذي: براء مطر</p>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
         </div>
-    </header>
 
-    <!-- القائمة الرئيسية -->
-    <nav class="main-nav">
-        <div class="menu-icon" onclick="toggleMenu()">☰</div>
         <ul class="nav-list" id="navMenu">
-            <li><a href="#home" data-lang-key="home">الرئيسية</a></li>
-            <li><a href="#about" data-lang-key="about">عن الشركة</a></li>
-            <li><a href="#products" data-lang-key="products">المنتجات</a></li>
-            <li><a href="#contact" data-lang-key="contact">التواصل</a></li>
+            <li><a href="#home" class="active">الرئيسية</a></li>
+            <li><a href="#about">عن الشركة</a></li>
+            <li><a href="#products">المنتجات</a></li>
+            <li><a href="#contact">التواصل</a></li>
         </ul>
     </nav>
 
     <!-- الأقسام الرئيسية -->
-    <main class="main-content">
-        <section id="home" class="active">
-            <div class="hero-section">
-                <div class="upload-container" data-type="main">
-                    <input type="file" accept="image/*" hidden>
-                    <label class="upload-label" data-lang-key="upload_main">رفع شعار الشركة</label>
-                    <img class="upload-preview">
+    <main>
+        <section id="home" class="active-section">
+            <div class="hero">
+                <div class="upload-container">
+                    <input type="file" id="mainUpload" accept="image/*" hidden>
+                    <label for="mainUpload" class="upload-btn">
+                        <span>⬆️ رفع شعار الشركة</span>
+                    </label>
+                    <img id="mainPreview" class="preview-image">
                 </div>
             </div>
         </section>
 
         <section id="about">
-            <div class="about-grid">
-                <div class="upload-container" data-type="about">
-                    <input type="file" accept="image/*" hidden>
-                    <label class="upload-label" data-lang-key="upload_about">رفع صورة عن الشركة</label>
-                    <img class="upload-preview">
+            <div class="content-box">
+                <div class="upload-container">
+                    <input type="file" id="aboutUpload" accept="image/*" hidden>
+                    <label for="aboutUpload" class="upload-btn">
+                        <span>⬆️ رفع صورة الشركة</span>
+                    </label>
+                    <img id="aboutPreview" class="preview-image">
                 </div>
-                <div class="about-text" data-lang-key="about_text">
-                    <h2>خبرة عقد من التميز</h2>
-                    <p>شركة رائدة في حلول الطاقة الشمسية منذ 2013...</p>
+                <div class="about-text">
+                    <h2>خبرة 10 سنوات في الطاقة النظيفة</h2>
+                    <p>نقدم حلولاً مبتكرة منذ 2013...</p>
                 </div>
             </div>
         </section>
 
         <section id="products">
-            <div class="products-grid">
-                <div class="product-card" data-product="1">
-                    <div class="upload-container" data-type="product">
-                        <input type="file" accept="image/*" hidden>
-                        <label class="upload-label" data-lang-key="upload_product">رفع صورة المنتج</label>
-                        <img class="upload-preview">
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="upload-container">
+                        <input type="file" id="productUpload" accept="image/*" hidden>
+                        <label for="productUpload" class="upload-btn">
+                            <span>⬆️ رفع صورة المنتج</span>
+                        </label>
+                        <img id="productPreview" class="preview-image">
                     </div>
                     <div class="product-info">
-                        <h3 data-lang-key="product1_title">النظام الشمسي المتكامل</h3>
-                        <p data-lang-key="product1_desc">كفاءة 22% مع ضمان 25 سنة...</p>
+                        <h3>النظام الشمسي الذكي</h3>
+                        <p>كفاءة عالية مع ضمان 25 سنة</p>
                     </div>
                 </div>
             </div>
@@ -79,17 +79,15 @@
         <section id="contact">
             <div class="contact-wrapper">
                 <div class="contact-box">
-                    <h3 data-lang-key="contact">معلومات التواصل</h3>
-                    <div class="contact-info">
-                        <p>+963 958 944 604</p>
-                        <a href="https://wa.me/963958944604" class="whatsapp-btn">واتساب</a>
-                        <a href="mailto:baraamatar11@gmail.com" class="email-btn">بريد إلكتروني</a>
-                    </div>
+                    <h3>تواصل معنا</h3>
+                    <p>+963 958 944 604</p>
+                    <a href="https://wa.me/963958944604" class="whatsapp-btn">واتساب مباشر</a>
+                    <a href="mailto:baraamatar11@gmail.com" class="email-btn">بريد إلكتروني</a>
                 </div>
                 
                 <div class="payment-box">
-                    <h3 data-lang-key="payment">الدفع الإلكتروني</h3>
-                    <div class="payment-details">
+                    <h3>الدفع الإلكتروني</h3>
+                    <div class="card-details">
                         <p>VISA: 4111 1111 1111 1111</p>
                         <p>Exp: 12/28 | CVV: 123</p>
                     </div>
@@ -98,6 +96,6 @@
         </section>
     </main>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
