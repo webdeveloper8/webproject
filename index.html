@@ -1,62 +1,43 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ألواح الطاقة الشمسية</title>
+    <title>شركة مطر للطاقة الشمسية</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/logo.png">
 </head>
 <body>
+    <!-- شريط اللغة -->
+    <div class="lang-bar">
+        <button onclick="changeLanguage('ar')">العربية</button>
+        <button onclick="changeLanguage('en')">English</button>
+        <button onclick="changeLanguage('tr')">Türkçe</button>
+    </div>
+
     <!-- القائمة المنسدلة -->
     <div class="menu-icon" onclick="toggleMenu()">☰</div>
     <nav class="menu" id="menu">
-        <a href="#home">الرئيسية</a>
-        <a href="#about">من نحن</a>
-        <a href="#services">خدماتنا</a>
-        <a href="#products">بضاعتنا</a>
-        <a href="#payment">الدفع الإلكتروني</a>
-        <a href="#contact">تواصل معنا</a>
+        <a href="#home" data-lang-key="home">الرئيسية</a>
+        <a href="#about" data-lang-key="about">عن الشركة</a>
+        <a href="#products" data-lang-key="products">المنتجات</a>
+        <a href="#contact" data-lang-key="contact">التواصل</a>
     </nav>
 
     <!-- الأقسام -->
     <section id="home" class="active">
-        <h1>أعمالنا</h1>
-        <div class="gallery">
-            <img src="images/work1.jpg" alt="عمل 1">
-            <img src="images/work2.jpg" alt="عمل 2">
-            <!-- أضف باقي الصور هنا -->
+        <div class="hero-section">
+            <h1 data-lang-key="company_name">شركة أبو معاذ مطر</h1>
+            <div class="image-upload">
+                <input type="file" id="mainImage" accept="image/*" hidden>
+                <label for="mainImage" class="upload-btn" data-lang-key="upload_main">رفع صورة الشعار</label>
+                <img id="mainPreview" class="uploaded-image">
+            </div>
         </div>
     </section>
 
-    <section id="about">
-        <h2>من نحن</h2>
-        <p>نحن شركة رائدة متخصصون في صناعة و  تركيب ألواح الطاقة الشمسية...</p>
-    </section>
-
-    <section id="services">
-        <h2>خدماتنا</h2>
-        <p>تفاصيل الخدمات المقدمة...</p>
-    </section>
-
-    <section id="products">
-        <h2>بضاعتنا</h2>
-        <p>المنتجات المتاحة...</p>
-    </section>
-
-    <section id="payment">
-        <h2>الدفع الإلكتروني</h2>
-        <button class="payment-btn" onclick="window.location.href='https://paypal.com/your-link'">
-            ادفع الآن
-        </button>
-    </section>
-
-    <section id="contact">
-        <h2>تواصل معنا</h2>
-        <p>الهاتف:0958944604</p>
-        <p>البريد: baraamatar11@gmail.com</p>
-    </section>
-
+    <!-- باقي الأقسام بنفس النمط -->
+    
     <script src="js/script.js"></script>
 </body>
 </html>
