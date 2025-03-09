@@ -11,13 +11,12 @@
 - إدارة محتوى ديناميكي
 
 ## التقنيات المستخدمة
-- Spring Boot (Backend)
 - HTML5/CSS3 (Frontend)
 - JavaScript (Dynamic Interactions)
-- H2 Database (التطوير)
 
 ## كيفية التشغيل
-```bash
-git clone https://github.com/yourusername/solar-company.git
-cd solar-company
-./mvnw spring-boot:run
+1. افتح ملف `index.html` في المتصفح.
+2. اختبر الوظائف (الترجمة، القائمة، الدفع).
+
+## التراخيص
+MIT License
