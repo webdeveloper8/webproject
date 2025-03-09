@@ -1,0 +1,103 @@
+/* التنسيقات العامة */
+:root {
+    --primary-color: #2c5f2d;
+    --secondary-color: #4CAF50;
+    --text-dark: #2c3e50;
+    --text-light: #f8f9fa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: 'Tahoma', 'Segoe UI', sans-serif;
+    background: linear-gradient(45deg, #f8f9fa, #e9f5e9);
+    color: var(--text-dark);
+    min-height: 100vh;
+    scroll-behavior: smooth;
+}
+
+/* شريط اللغات */
+.lang-switcher {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001;
+    background: rgba(255,255,255,0.9);
+    padding: 10px;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.lang-switcher select {
+    padding: 8px 20px;
+    border: 2px solid var(--primary-color);
+    border-radius: 25px;
+    background: transparent;
+    color: var(--primary-color);
+    font-weight: 600;
+    cursor: pointer;
+    appearance: none;
+}
+
+/* القائمة الرئيسية */
+.menu-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--primary-color);
+    color: white;
+    padding: 15px 18px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    font-size: 1.5rem;
+}
+
+.menu {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background: rgba(255,255,255,0.98);
+    border-radius: 15px;
+    padding: 20px;
+    width: 280px;
+    opacity: 0;
+    transform: translateY(-20px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    z-index: 999;
+}
+
+.menu.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.menu a {
+    display: block;
+    padding: 15px 20px;
+    margin: 8px 0;
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.menu a:hover {
+    background: #e9f5e9;
+    transform: translateX(-10px);
+}
+
+/* الأقسام */
+section {
+    padding: 100px 8%;
+   
