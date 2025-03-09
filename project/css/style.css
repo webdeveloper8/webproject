@@ -1,0 +1,128 @@
+/* التنسيقات العامة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Tahoma', 'Arial', sans-serif;
+    line-height: 1.6;
+    background: #f0f4f8;
+    color: #2c3e50;
+}
+
+/* شريط اللغات */
+.lang-switcher {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: rgba(255,255,255,0.9);
+    padding: 10px;
+    border-radius: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.lang-switcher select {
+    padding: 8px 15px;
+    border: 2px solid #2c5f2d;
+    border-radius: 20px;
+    background: transparent;
+    color: #2c5f2d;
+    cursor: pointer;
+}
+
+/* القائمة */
+.menu-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #2c5f2d;
+    color: white;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.menu {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    width: 200px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: none;
+}
+
+.menu.active {
+    display: block;
+}
+
+.menu a {
+    display: block;
+    padding: 10px;
+    color: #2c5f2d;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.menu a:hover {
+    background: #e9f5e9;
+}
+
+/* الأقسام */
+section {
+    padding: 80px 5%;
+    min-height: 100vh;
+    display: none;
+}
+
+section.active {
+    display: block;
+}
+
+/* تصميم الدفع */
+.payment-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
+.bank-details {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.payment-btn {
+    background: #2c5f2d;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+/* التجاوب مع الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .payment-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .menu {
+        width: 90%;
+        right: 5%;
+    }
+}
